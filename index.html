@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Lengkap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        header {
+            background-color: #ff9800;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .menu-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+        .menu-item img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+        .menu-item span {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .menu-item span.price {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .menu-item button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .menu-item button:hover {
+            background-color: #218838;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #ff9800;
+            color: white;
+        }
+        #cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #cart-dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: white;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Menu Lengkap</h1>
+    </header>
+    <main>
+        <div class="menu-container">
+            <!-- Nasi Goreng -->
+            <div class="menu-item">
+                <img src="nasi goreng.png" alt="Nasi Goreng Biasa">
+                <span>Nasi Goreng Biasa</span>
+                <span class="price">Rp15.000</span>
+                <button onclick="addToCart('Nasi Goreng Biasa', 15000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="nasi goreng.png" alt="Nasi Goreng Jumbo">
+                <span>Nasi Goreng Jumbo</span>
+                <span class="price">Rp30.000</span>
+                <button onclick="addToCart('Nasi Goreng Jumbo', 30000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="nasi goreng.png" alt="Nasi Goreng Spesial">
+                <span>Nasi Goreng Spesial</span>
+                <span class="price">Rp18.000</span>
+                <button onclick="addToCart('Nasi Goreng Spesial', 18000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="nasi goreng.png" alt="Nasi Goreng Double Telor">
+                <span>Nasi Goreng Double Telor</span>
+                <span class="price">Rp18.000</span>
+                <button onclick="addToCart('Nasi Goreng Double Telor', 18000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="nasi goreng.png" alt="Nasi Goreng Mawud">
+                <span>Nasi Goreng Mawud</span>
+                <span class="price">Rp18.000</span>
+                <button onclick="addToCart('Nasi Goreng Mawud', 18000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="nasi goreng.png" alt="Nasi Goreng Mawud Kwetiaw">
+                <span>Nasi Goreng Mawud Kwetiaw</span>
+                <span class="price">Rp18.000</span>
+                <button onclick="addToCart('Nasi Goreng Mawud Kwetiaw', 18000)">Add to Cart</button>
+            </div>
+            <!-- Kwetiaw -->
+            <div class="menu-item">
+                <img src="kwetiaw.png" alt="Kwetiaw Goreng/Rebus Biasa">
+                <span>Kwetiaw Goreng/Rebus Biasa</span>
+                <span class="price">Rp16.000</span>
+                <button onclick="addToCart('Kwetiaw Goreng/Rebus Biasa', 16000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="kwetiaw.png" alt="Kwetiaw Goreng/Rebus Spesial">
+                <span>Kwetiaw Goreng/Rebus Spesial</span>
+                <span class="price">Rp18.000</span>
+                <button onclick="addToCart('Kwetiaw Goreng/Rebus Spesial', 18000)">Add to Cart</button>
+            </div>
+            <!-- Mie -->
+            <div class="menu-item">
+                <img src="mie goreng.png" alt="Mie Goreng Biasa">
+                <span>Mie Goreng Biasa</span>
+                <span class="price">Rp16.000</span>
+                <button onclick="addToCart('Mie Goreng Biasa', 16000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="mie goreng.png" alt="Mie Goreng Spesial">
+                <span>Mie Goreng Spesial</span>
+                <span class="price">Rp18.000</span>
+                <button onclick="addToCart('Mie Goreng Spesial', 18000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="mie rebus.png" alt="Mie Rebus Biasa">
+                <span>Mie Rebus Biasa</span>
+                <span class="price">Rp16.000</span>
+                <button onclick="addToCart('Mie Rebus Biasa', 16000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="mie rebus.png" alt="Mie Rebus Spesial">
+                <span>Mie Rebus Spesial</span>
+                <span class="price">Rp18.000</span>
+                <button onclick="addToCart('Mie Rebus Spesial', 18000)">Add to Cart</button>
+            </div>
+            <!-- Capcay -->
+            <div class="menu-item">
+                <img src="capcay.png" alt="Capcay Biasa">
+                <span>Capcay Biasa</span>
+                <span class="price">Rp16.000</span>
+                <button onclick="addToCart('Capcay Biasa', 16000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="capcay.png" alt="Capcay Double Telor">
+                <span>Capcay Double Telor</span>
+                <span class="price">Rp18.000</span>
+                <button onclick="addToCart('Capcay Double Telor', 18000)">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="capcay.png" alt="Capcay Spesial">
+                <span>Capcay Spesial</span>
+                <span class="price">Rp20.000</span>
+                <button onclick="addToCart('Capcay Spesial', 20000)">Add to Cart</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        © 2024 Warung Nasi Goreng
+    </footer>
+    
+    <!-- Cart Icon -->
+    <div id="cart" onclick="toggleCartDropdown()">
+        Keranjang <span id="cart-count">0</span> item
+    </div>
+    
+    <!-- Cart Dropdown -->
+    <div id="cart-dropdown">
+        <h3>Keranjang</h3>
+        <ul id="cart-items"></ul>
+        <button id="checkout" onclick="checkout()">Checkout</button>
+    </div>
+    
+    <script>
+        let cart = [];
+
+        function addToCart(itemName, itemPrice) {
+            cart.push({ name: itemName, price: itemPrice });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartCount = document.getElementById("cart-count");
+            const cartItems = document.getElementById("cart-items");
+            cartCount.textContent = cart.length;
+
+            // Clear previous cart items
+            cartItems.innerHTML = '';
+
+            // Add new items to cart
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - Rp${item.price.toLocaleString()}`;
+                cartItems.appendChild(listItem);
+            });
+        }
+
+        function toggleCartDropdown() {
+            const cartDropdown = document.getElementById("cart-dropdown");
+            cartDropdown.style.display = cartDropdown.style.display === "block" ? "none" : "block";
+        }
+
+        function checkout() {
+    // Ganti URL di bawah ini dengan URL halaman checkout yang diinginkan
+    window.location.href = "https://nasigorengmassuliwa.github.io/checkout/"; // Ganti dengan URL yang sesuai
+}
+
+    </script>
+</body>
+</html>
