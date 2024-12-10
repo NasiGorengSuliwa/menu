@@ -207,41 +207,45 @@
                 <span class="price">Rp20.000</span>
                 <button onclick="addToCart('Capcay Spesial', 20000)">Add to Cart</button>
             </div>
+
+            <!-- Additional menu items go here... -->
         </div>
     </main>
     <footer>
         © 2024 Warung Nasi Goreng
     </footer>
-    
+
     <!-- Cart Icon -->
     <div id="cart" onclick="toggleCartDropdown()">
         Keranjang <span id="cart-count">0</span> item
     </div>
-    
+
     <!-- Cart Dropdown -->
     <div id="cart-dropdown">
         <h3>Keranjang</h3>
         <ul id="cart-items"></ul>
         <button id="checkout" onclick="checkout()">Checkout</button>
     </div>
-    
+
     <script>
         let cart = [];
 
+        // Menambahkan item ke keranjang
         function addToCart(itemName, itemPrice) {
             cart.push({ name: itemName, price: itemPrice });
             updateCart();
         }
 
+        // Memperbarui tampilan keranjang
         function updateCart() {
             const cartCount = document.getElementById("cart-count");
             const cartItems = document.getElementById("cart-items");
             cartCount.textContent = cart.length;
 
-            // Clear previous cart items
+            // Hapus item lama
             cartItems.innerHTML = '';
 
-            // Add new items to cart
+            // Tambahkan item baru
             cart.forEach(item => {
                 const listItem = document.createElement('li');
                 listItem.textContent = `${item.name} - Rp${item.price.toLocaleString()}`;
@@ -249,16 +253,32 @@
             });
         }
 
+        // Menampilkan atau menyembunyikan dropdown keranjang
         function toggleCartDropdown() {
             const cartDropdown = document.getElementById("cart-dropdown");
             cartDropdown.style.display = cartDropdown.style.display === "block" ? "none" : "block";
         }
 
+        // Melakukan checkout dan mengarahkan ke WhatsApp
         function checkout() {
-    // Ganti URL di bawah ini dengan URL halaman checkout yang diinginkan
-    window.location.href = "https://nasigorengsuliwa.github.io/checkout.github.io/"; // Ganti dengan URL yang sesuai
-}
+            // Format pesan dari item di keranjang
+            let message = "Halo Ka! Saya ingin memesan:\n\n";
+            cart.forEach(item => {
+                message += `${item.name} - Rp${item.price.toLocaleString()}\n`;
+            });
+            message += `\nTotal: Rp${getTotalPrice().toLocaleString()}\n\nMohon Segara diproses ya, nanti saya ambil makananya.`;
 
+            // Encode pesan untuk WhatsApp
+            const whatsappURL = `https://wa.me/62081222806656?text=${encodeURIComponent(message)}`; // Ganti dengan nomor WhatsApp yang sesuai
+
+            // Redirect ke WhatsApp
+            window.location.href = whatsappURL;
+        }
+
+        // Menghitung total harga keranjang
+        function getTotalPrice() {
+            return cart.reduce((total, item) => total + item.price, 0);
+        }
     </script>
 </body>
 </html>
